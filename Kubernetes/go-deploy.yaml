@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-deployment
+  labels:
+    app: go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go
+  template:
+    metadata:
+      labels:
+        app: go
+    spec:
+      containers:
+      - name: go
+        image: macengiz/helloworld
+        ports:
+        - containerPort: 3000
+      #   volumeMounts:
+      #   - mountPath: /app
+      #     name: go-volume
+      # volumes:
+      # - name: go-volume
+      #   persistentVolumeClaim:
+      #     claimName: go-pvc
